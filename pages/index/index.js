@@ -8,7 +8,7 @@ Page({
    */
   data: {
     recommendList: [],
-    slideshowList:[]
+    slideshowList: []
   },
 
   /**
@@ -24,19 +24,28 @@ Page({
     //     })
     //   }
     // })
-    ajax("/personalized").then((result)=>{
-      console.log(result)
+    ajax("/personalized").then((res) => {
+      this.setData({
+        recommendList: res.result
+      })
     })
 
 
     // 轮播图
-    wx.request({
-      url: "http://localhost:3000/banner",
-      success: (res) => {
-        this.setData({
-          slideshowList: res.data.banners
-        })
-      }
+    // wx.request({
+    //   url: "http://localhost:3000/banner",
+    //   success: (res) => {
+    //     this.setData({
+    //       slideshowList: res.data.banners
+    //     })
+    //   }
+    // })
+    ajax("/banner", {
+      type: 2
+    }).then((res) => {
+      this.setData({
+        slideshowList: res.banners
+      })
     })
   },
 
