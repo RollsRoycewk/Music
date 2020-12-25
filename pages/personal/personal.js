@@ -30,7 +30,11 @@ Page({
       transitionName: "transform,400ms"
     })
   },
-
+  loginBtn() {
+    wx.navigateTo({
+      url: '/pages/login/login',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

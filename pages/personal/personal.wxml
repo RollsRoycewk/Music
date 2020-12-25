@@ -4,7 +4,7 @@
 
 
     <view class="user-info-box">
-      <view class="portrait-box">
+      <view class="portrait-box" bindtap="loginBtn">
         <image class="portrait" src="/static/images/personal/missing-face.png"></image>
       </view>
       <view class="info-box">
