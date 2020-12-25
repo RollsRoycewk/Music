@@ -50,7 +50,70 @@
     </scroll-view>
 
     <!-- 排行榜 -->
-    <HeaderNav></HeaderNav>
+    <view class="ranking-container">
+      <HeaderNav></HeaderNav>
+      <swiper next-margin="50rpx">
+        <swiper-item>
+          <view class="ranking-title"> 中国TOP排行榜(内地榜) > </view>
+          <view class="ranking-item">
+            <image src="/static/images/nvsheng.jpg"></image>
+            <text class="ranking-index">1</text>
+            <text class="ranking-value">耳朵</text>
+          </view>
+          <view class="ranking-item">
+            <image src="/static/images/nvsheng.jpg"></image>
+            <text class="ranking-index">1</text>
+            <text class="ranking-value">耳朵</text>
+          </view>
+          <view class="ranking-item">
+            <image src="/static/images/nvsheng.jpg"></image>
+            <text class="ranking-index">1</text>
+            <text class="ranking-value">耳朵</text>
+          </view>
+        </swiper-item>
+
+         <swiper-item>
+          <view class="ranking-title"> 中国TOP排行榜(内地榜) > </view>
+          <view class="ranking-item">
+            <image src="/static/images/nvsheng.jpg"></image>
+            <text class="ranking-index">1</text>
+            <text class="ranking-value">耳朵</text>
+          </view>
+          <view class="ranking-item">
+            <image src="/static/images/nvsheng.jpg"></image>
+            <text class="ranking-index">1</text>
+            <text class="ranking-value">耳朵</text>
+          </view>
+          <view class="ranking-item">
+            <image src="/static/images/nvsheng.jpg"></image>
+            <text class="ranking-index">1</text>
+            <text class="ranking-value">耳朵</text>
+          </view>
+        </swiper-item>
+
+         <swiper-item>
+          <view class="ranking-title"> 中国TOP排行榜(内地榜) > </view>
+          <view class="ranking-item">
+            <image src="/static/images/nvsheng.jpg"></image>
+            <text class="ranking-index">1</text>
+            <text class="ranking-value">耳朵</text>
+          </view>
+          <view class="ranking-item">
+            <image src="/static/images/nvsheng.jpg"></image>
+            <text class="ranking-index">1</text>
+            <text class="ranking-value">耳朵</text>
+          </view>
+          <view class="ranking-item">
+            <image src="/static/images/nvsheng.jpg"></image>
+            <text class="ranking-index">1</text>
+            <text class="ranking-value">耳朵</text>
+          </view>
+        </swiper-item>
+
+      </swiper>
+
+
+    </view>
   </view>
 
 
