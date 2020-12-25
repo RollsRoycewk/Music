@@ -1,12 +1,36 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/videos/videos",
+    "pages/personal/personal"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#d43c33",
     "navigationBarTitleText": "wangkaiZone",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/static/images/tabs/tab-home.png",
+        "selectedIconPath": "/static/images/tabs/tab-home-current.png"
+      },
+      {
+        "pagePath": "pages/videos/videos",
+        "text": "视屏",
+        "iconPath": "/static/images/tabs/selected.png",
+        "selectedIconPath": "/static/images/tabs/selected.png"
+      },
+      {
+        "pagePath": "pages/personal/personal",
+        "text": "个人中心",
+        "iconPath": "/static/images/tabs/tab-my.png",
+        "selectedIconPath": "/static/images/tabs/tab-my-current.png"
+      }
+    ]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
