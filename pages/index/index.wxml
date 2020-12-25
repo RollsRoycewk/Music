@@ -40,7 +40,7 @@
         <view class="recommend-more">查看更多</view>
       </view>
     </view> -->
-    <HeaderNav></HeaderNav>
+    <HeaderNav smallTitle="推荐歌曲" moreTitle="为你精心推荐"></HeaderNav>
     <!-- scrolls -->
     <scroll-view class="scroll-container" enable-flex scroll-x>
       <view class="scroll-item" wx:for="{{recommendList}}" wx:key="id" wx:for-item="rolls">
@@ -51,7 +51,7 @@
 
     <!-- 排行榜 -->
     <view class="ranking-container">
-      <HeaderNav></HeaderNav>
+      <HeaderNav smallTitle="排行榜" moreTitle="热歌风向标"></HeaderNav>
       <swiper next-margin="50rpx">
         <swiper-item>
           <view class="ranking-title"> 中国TOP排行榜(内地榜) > </view>
@@ -72,7 +72,7 @@
           </view>
         </swiper-item>
 
-         <swiper-item>
+        <swiper-item>
           <view class="ranking-title"> 中国TOP排行榜(内地榜) > </view>
           <view class="ranking-item">
             <image src="/static/images/nvsheng.jpg"></image>
@@ -91,7 +91,7 @@
           </view>
         </swiper-item>
 
-         <swiper-item>
+        <swiper-item>
           <view class="ranking-title"> 中国TOP排行榜(内地榜) > </view>
           <view class="ranking-item">
             <image src="/static/images/nvsheng.jpg"></image>

@@ -1,9 +1,9 @@
 <!--components/HeaderNav/HeaderNav.wxml-->
 <!-- 头部导航 -->
 <view class="title-nav">
-  <text class="title">推荐歌曲</text>
+  <text class="title">{{smallTitle}}</text>
   <view class="recommend-classify">
-    <view class="recommend">为你精心推荐</view>
+    <view class="recommend">{{moreTitle}}</view>
     <view class="recommend-more">查看更多</view>
   </view>
 </view>

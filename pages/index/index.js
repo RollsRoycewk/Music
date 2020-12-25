@@ -8,7 +8,8 @@ Page({
    */
   data: {
     recommendList: [],
-    slideshowList: []
+    slideshowList: [],
+    rankingList: []
   },
 
   /**
@@ -47,6 +48,26 @@ Page({
         slideshowList: res.banners
       })
     })
+
+
+    // let reqNum = [1, 3, 6]
+    // let index = 0;
+    // let toList = [];
+    // while (index < reqNum.length) {
+    //   ajax("/top/list", {
+    //     idx: reqNum[index++]
+    //   }).then((res) => {
+    //     console.log(res)
+    //     toList.push({
+    //       name: res.playlist.name,
+    //       list: res.playlist.tracks
+    //     })
+    //     // this.setData({
+    //     //   rankingList: this.toList
+    //     // })
+    //   })
+    // }
+
   },
 
   /**
