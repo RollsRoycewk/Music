@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/personal/personal",
     "pages/index/index",
-    "pages/videos/videos",
-    "pages/personal/personal"
+    "pages/videos/videos"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -21,7 +21,7 @@
       {
         "pagePath": "pages/videos/videos",
         "text": "视屏",
-        "iconPath": "/static/images/tabs/selected.png",
+        "iconPath": "/static/images/tabs/select.png",
         "selectedIconPath": "/static/images/tabs/selected.png"
       },
       {
