@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    touchMove: ""
+    touchMove: "",
+    transitionName: ""
   },
 
   handleTouch(event) {
@@ -25,7 +26,8 @@ Page({
   },
   handleTouchEnd() {
     this.setData({
-      touchMove: ""
+      touchMove: "",
+      transitionName: "transform,400ms"
     })
   },
 

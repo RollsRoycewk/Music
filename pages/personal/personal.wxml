@@ -15,19 +15,19 @@
     <view class="vip-card-box">
       <image class="card-bg" src="/static/images/personal/vip-card-bg.png" mode=""></image>
       <view class="b-btn">
-        立即开通
+        立即续费
       </view>
       <view class="tit">
         <!-- 会员图标-->
-        <text class="iconfont icon-huiyuan-"></text> 硅谷会员
+        <text class="iconfont icon-huiyuan-"></text> Svip 年 2077-7-7 到期
       </view>
-      <text class="e-m">atguigu Union</text>
-      <text class="e-b">开通会员听歌, 撸代码</text>
+      <text class="e-m">wangkaiZone</text>
+      <text class="e-b">吃饭,睡觉, 撸代码</text>
     </view>
   </view>
 
 
-  <view class="cover-container" bindtouchstart="handleTouch" bindtouchmove="handleTouchMove" style="transform:translatey({{touchMove}}px)" bindtouchend="handleTouchEnd">
+  <view class="cover-container" bindtouchstart="handleTouch" bindtouchmove="handleTouchMove" style="transform:translateY({{touchMove}}px);transition:{{transitionName}}" bindtouchend="handleTouchEnd">
     <image class=" arc " src="/static/images/personal/arc.png "></image>
     <!-- 个人中心导航 -->
     <view class="nav-section ">
