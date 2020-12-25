@@ -50,23 +50,22 @@ Page({
     })
 
 
-    // let reqNum = [1, 3, 6]
-    // let index = 0;
-    // let toList = [];
-    // while (index < reqNum.length) {
-    //   ajax("/top/list", {
-    //     idx: reqNum[index++]
-    //   }).then((res) => {
-    //     console.log(res)
-    //     toList.push({
-    //       name: res.playlist.name,
-    //       list: res.playlist.tracks
-    //     })
-    //     // this.setData({
-    //     //   rankingList: this.toList
-    //     // })
-    //   })
-    // }
+    let reqNum = [15, 20, 21, 22]
+    let index = 0;
+    let toList = [];
+    while (index < reqNum.length) {
+      ajax("/top/list", {
+        idx: reqNum[index++]
+      }).then((res) => {
+        toList.push({
+          name: res.playlist.name,
+          tracks: res.playlist.tracks
+        })
+        this.setData({
+          rankingList: toList
+        })
+      })
+    }
 
   },
 

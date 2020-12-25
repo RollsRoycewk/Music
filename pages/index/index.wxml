@@ -53,7 +53,26 @@
     <view class="ranking-container">
       <HeaderNav smallTitle="排行榜" moreTitle="热歌风向标"></HeaderNav>
       <swiper next-margin="50rpx">
-        <swiper-item>
+        <swiper-item wx:for="{{rankingList}}" wx:key="index">
+          <view class="ranking-title"> {{item.name}} > </view>
+          <view class="ranking-item" wx:for="{{item.tracks}}" wx:key="childIndex" wx:for-index="childIndex" wx:for-item="childItem">
+            <image src="{{childItem.al.picUrl}}"></image>
+            <text class="ranking-index">{{childIndex+1}}</text>
+            <text class="ranking-value">{{childItem.al.name}}</text>
+          </view>
+          <!-- <view class="ranking-item">
+            <image src="/static/images/nvsheng.jpg"></image>
+            <text class="ranking-index">1</text>
+            <text class="ranking-value">耳朵</text>
+          </view>
+          <view class="ranking-item">
+            <image src="/static/images/nvsheng.jpg"></image>
+            <text class="ranking-index">1</text>
+            <text class="ranking-value">耳朵</text>
+          </view> -->
+        </swiper-item>
+
+        <!-- <swiper-item>
           <view class="ranking-title"> 中国TOP排行榜(内地榜) > </view>
           <view class="ranking-item">
             <image src="/static/images/nvsheng.jpg"></image>
@@ -89,26 +108,7 @@
             <text class="ranking-index">1</text>
             <text class="ranking-value">耳朵</text>
           </view>
-        </swiper-item>
-
-        <swiper-item>
-          <view class="ranking-title"> 中国TOP排行榜(内地榜) > </view>
-          <view class="ranking-item">
-            <image src="/static/images/nvsheng.jpg"></image>
-            <text class="ranking-index">1</text>
-            <text class="ranking-value">耳朵</text>
-          </view>
-          <view class="ranking-item">
-            <image src="/static/images/nvsheng.jpg"></image>
-            <text class="ranking-index">1</text>
-            <text class="ranking-value">耳朵</text>
-          </view>
-          <view class="ranking-item">
-            <image src="/static/images/nvsheng.jpg"></image>
-            <text class="ranking-index">1</text>
-            <text class="ranking-value">耳朵</text>
-          </view>
-        </swiper-item>
+        </swiper-item> -->
 
       </swiper>
 

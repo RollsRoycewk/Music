@@ -81,31 +81,37 @@
 }
 
 /* 排行榜 */
-.ranking-container{
+
+.ranking-container {
   width: 100%;
 }
-.ranking-container .ranking-title{
+
+.ranking-container .ranking-title {
   font-size: 25rpx;
 }
-.ranking-container swiper{
-  height: 500rpx;
+
+.ranking-container swiper {
+  height: 450rpx;
 }
-.ranking-container swiper image{
+
+.ranking-container swiper image {
   width: 100rpx;
   height: 100rpx;
   border-radius: 10rpx;
   margin-bottom: 15rpx;
 }
+
 /* .ranking-container swiper swiper-item{
  background-color: #FBFBFB;
 } */
-.ranking-container swiper swiper-item .ranking-item{
+
+.ranking-container swiper swiper-item .ranking-item {
   display: flex;
   align-items: center;
   margin-top: 20rpx;
- 
 }
-.ranking-container swiper swiper-item .ranking-item .ranking-index{
+
+.ranking-container swiper swiper-item .ranking-item .ranking-index {
   width: 100rpx;
   height: 100rpx;
   text-align: center;
