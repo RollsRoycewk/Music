@@ -34,7 +34,7 @@
   padding: 0 20rpx;
 }
 
-.title-nav .title {
+/* .title-nav .title {
   font-size: 28rpx;
   color: #666;
 }
@@ -52,15 +52,15 @@
   border-radius: 10px;
   text-align: center;
   line-height: 50rpx;
-}
-
-
+} */
 
 .recommend-container .scroll-container {
   display: flex;
   padding: 20rpx 0;
+  height: 300rpx;
 }
-.scroll-container .scroll-item{
+
+.scroll-container .scroll-item {
   margin-right: 20rpx;
 }
 
@@ -69,13 +69,13 @@
   height: 200rpx;
   border-radius: 10px;
 }
-.recommend-container .scroll-container text{
-  /* height:80rpx; */
-  display:-webkit-box;
-  /* 文本行排列方向 */
-  -webkit-box-orient:vertical;
-  /* 设置几行之后出现溢出省略号 */
-  -webkit-line-clamp:2;
-  overflow:hidden;
-}
 
+.recommend-container .scroll-container text {
+  /* height:80rpx; */
+  display: -webkit-box;
+  /* 文本行排列方向 */
+  -webkit-box-orient: vertical;
+  /* 设置几行之后出现溢出省略号 */
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}

@@ -1,0 +1,21 @@
+/* components/HeaderNav/HeaderNav.wxss */
+
+.title-nav .title {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.title-nav .recommend-classify {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title-nav .recommend-classify .recommend-more {
+  font-size: 20rpx;
+  width: 122rpx;
+  height: 50rpx;
+  border: 1rpx solid black;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 50rpx;
+}
