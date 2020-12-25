@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/index/index",
     "pages/personal/personal",
-    "pages/videos/videos",
-    "pages/login/login"
+    "pages/videos/videos"
   ],
   "window": {
     "backgroundTextStyle": "light",
