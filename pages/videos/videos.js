@@ -12,13 +12,43 @@ Page({
   },
 
   // 点击事件
-  handleTap(event) {
+  async handleTap(event) {
     let res = event.target.dataset.currentid;
     if (res) {
       this.setData({
         currentid: res
       })
     }
+    wx.showLoading({
+      title: "数据请求中"
+    })
+    this.setData({
+      videosList: []
+    })
+    await this.getVideosList()
+    wx.hideLoading()
+  },
+  async getVideosList() {
+    const val = await ajax("/video/group", {
+      id: this.data.currentid
+    })
+
+    if (val.datas) {
+      const videosList = val.datas.map((item) => {
+        return {
+          title: item.data.title,
+          nickname: item.data.creator.nickname,
+          urlInfo: item.data.urlInfo.url,
+          id: item.data.urlInfo.id,
+          commentCount: item.data.commentCount,
+          shareCount: item.data.shareCount
+        }
+      })
+      this.setData({
+        videosList
+      })
+    }
+
   },
 
   /**
@@ -45,29 +75,8 @@ Page({
       navList,
       currentid: navList[0].id,
     })
+    this.getVideosList()
 
-    ajax("/video/group", {
-      id: this.data.currentid
-    }).then((val) => {
-      // console.log(val)
-      if (val.datas) {
-        const videosList = val.datas.map((item) => {
-          return {
-            title: item.data.title,
-            nickname: item.data.creator.nickname,
-            urlInfo: item.data.urlInfo.url,
-            id: item.data.urlInfo.id,
-            commentCount: item.data.commentCount,
-            shareCount: item.data.shareCount
-          }
-        })
-        this.setData({
-          videosList
-        })
-      }
-
-      // console.log(videosList)
-    })
   },
 
   /**
