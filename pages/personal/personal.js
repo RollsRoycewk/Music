@@ -54,13 +54,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: async function() {
-    const res = await wx.getStorage({
-      key: "userInfo"
-    })
+    // const res = await wx.getStorage({
+    //   key: "userInfo"
+    // })
+    const res = wx.getStorageSync("userInfo")
+    if (res) {
+      this.setData({
+        userInfo: JSON.parse(res)
+      })
+    }
     // console.log(JSON.parse(res.data))
-    this.setData({
-      userInfo: JSON.parse(res.data)
-    })
+    // this.setData({
+    //   userInfo: JSON.parse(res.data)
+    // })
   },
 
   /**
