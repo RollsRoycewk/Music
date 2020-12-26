@@ -1,6 +1,12 @@
 <!--pages/videos/videos.wxml-->
+<!-- 头部 -->
 <view class="header-container">
   <image src="/static/images/video/video.jpg"></image>
   <input placeholder="光辉岁月" placeholder-class="placeholderStyle"></input>
   <image src="/static/images/logo.png"></image>
 </view>
+
+<!-- nav -->
+<scroll-view class="nav-container" enable-flex scroll-x>
+  <view class="nav-item active" wx:for="{{navList}}" wx:key="id">{{item.name}}</view>
+</scroll-view>
