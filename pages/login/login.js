@@ -1,4 +1,6 @@
 // pages/login/login.js
+
+import ajax from "../../utils/ajax.js"
 Page({
 
   /**
@@ -32,7 +34,7 @@ Page({
     })
   },
 
-  submit() {
+  async submit() {
     let {
       phone,
       password
@@ -51,6 +53,24 @@ Page({
         icon: "none"
       })
       return;
+    }
+
+    let res = await ajax("/login/cellphone", {
+      phone,
+      password
+    })
+    if (res.code === 200) {
+      // console.log(res.profile)
+      let data = JSON.stringify(res.profile)
+      wx.setStorageSync(
+        "userInfo",
+        data
+      )
+
+      wx.showToast({
+        title: "登录成功,即将跳转",
+        icon: "none"
+      })
     }
 
     wx.switchTab({

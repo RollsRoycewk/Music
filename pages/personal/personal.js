@@ -6,7 +6,8 @@ Page({
    */
   data: {
     touchMove: "",
-    transitionName: ""
+    transitionName: "",
+    userInfo: {}
   },
 
   handleTouch(event) {
@@ -52,8 +53,14 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
-
+  onShow: async function() {
+    const res = await wx.getStorage({
+      key: "userInfo"
+    })
+    // console.log(JSON.parse(res.data))
+    this.setData({
+      userInfo: JSON.parse(res.data)
+    })
   },
 
   /**
