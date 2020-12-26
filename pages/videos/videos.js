@@ -7,15 +7,18 @@ Page({
    */
   data: {
     navList: [],
-    currentid: 58100
+    currentid: 58100,
+    videosList: []
   },
 
   // 点击事件
   handleTap(event) {
     let res = event.target.dataset.currentid;
-    this.setData({
-      currentid: res
-    })
+    if (res) {
+      this.setData({
+        currentid: res
+      })
+    }
   },
 
   /**
@@ -36,9 +39,34 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: async function() {
-    const navList = await ajax("/video/group/list")
+    const result = await ajax("/video/group/list")
+    let navList = result.data.splice(0, 14)
     this.setData({
-      navList: navList.data.splice(0, 14)
+      navList,
+      currentid: navList[0].id,
+    })
+
+    ajax("/video/group", {
+      id: this.data.currentid
+    }).then((val) => {
+      // console.log(val)
+      if (val.datas) {
+        const videosList = val.datas.map((item) => {
+          return {
+            title: item.data.title,
+            nickname: item.data.creator.nickname,
+            urlInfo: item.data.urlInfo.url,
+            id: item.data.urlInfo.id,
+            commentCount: item.data.commentCount,
+            shareCount: item.data.shareCount
+          }
+        })
+        this.setData({
+          videosList
+        })
+      }
+
+      // console.log(videosList)
     })
   },
 

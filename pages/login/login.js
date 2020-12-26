@@ -57,7 +57,8 @@ Page({
 
     let res = await ajax("/login/cellphone", {
       phone,
-      password
+      password,
+      isLogin: true
     })
     if (res.code === 200) {
       // console.log(res.profile)
