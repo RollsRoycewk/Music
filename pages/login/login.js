@@ -27,11 +27,37 @@ Page({
     let type = event.currentTarget.dataset.type;
     let value = event.detail.value;
     // console.log(type, value)
-
     this.setData({
       [type]: value
     })
   },
+
+  submit() {
+    let {
+      phone,
+      password
+    } = this.data
+
+    if (!phone) {
+      wx.showToast({
+        title: "请输入手机号",
+        icon: "none"
+      })
+      return;
+    }
+    if (!password) {
+      wx.showToast({
+        title: "请输密码",
+        icon: "none"
+      })
+      return;
+    }
+
+    wx.switchTab({
+      url: '/pages/personal/personal',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
