@@ -1,2 +1,6 @@
 <!--pages/videos/videos.wxml-->
-<text>pages/videos/videos.wxml</text>
+<view class="header-container">
+  <image src="/static/images/video/video.jpg"></image>
+  <input placeholder="光辉岁月" placeholder-class="placeholderStyle"></input>
+  <image src="/static/images/logo.png"></image>
+</view>

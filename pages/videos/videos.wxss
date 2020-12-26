@@ -1,1 +1,26 @@
 /* pages/videos/videos.wxss */
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 0;
+}
+
+.header-container image {
+  width: 60rpx;
+  height: 60rpx;
+  padding: 0 10rpx;
+}
+
+.header-container input {
+  border: 1rpx solid #ccc;
+  height: 60rpx;
+  flex-grow: 1;
+  border-radius: 10rpx;
+}
+
+.placeholderStyle {
+  color: red;
+  text-align: center;
+  font-size: 28rpx;
+}
