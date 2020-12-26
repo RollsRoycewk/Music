@@ -7,6 +7,6 @@
 </view>
 
 <!-- nav -->
-<scroll-view class="nav-container" enable-flex scroll-x>
-  <view class="nav-item active" wx:for="{{navList}}" wx:key="id">{{item.name}}</view>
+<scroll-view class="nav-container" enable-flex scroll-x bindtap="handleTap">
+  <view class="nav-item {{ currentid === item.id ? 'active' : ''}}" wx:for="{{navList}}" wx:key="id" data-currentId="{{item.id}}">{{item.name}} </view>
 </scroll-view>

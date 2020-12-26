@@ -6,7 +6,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    navList: []
+    navList: [],
+    currentid: 58100
+  },
+
+  // 点击事件
+  handleTap(event) {
+    let res = event.target.dataset.currentid;
+    this.setData({
+      currentid: res
+    })
   },
 
   /**
