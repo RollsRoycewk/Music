@@ -8,7 +8,8 @@ Page({
   data: {
     navList: [],
     currentid: 58100,
-    videosList: []
+    videosList: [],
+    triggered: false
   },
 
   // 点击事件
@@ -50,7 +51,13 @@ Page({
     }
 
   },
-
+  async handleFresherrefresh() {
+    console.log("handleFresherrefresh")
+    await this.getVideosList()
+    this.setData({
+      triggered: false
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -97,7 +104,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    console.log("onPullDownRefresh")
   },
 
   /**

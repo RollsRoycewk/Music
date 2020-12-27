@@ -52,7 +52,8 @@
 }
 
 .videoList {
-  padding-top: 40rpx;
+  /* padding-top: 40rpx; */
+  height: calc(100vh - 82rpx - 96rpx);
 }
 
 .videoList .content {
