@@ -50,7 +50,16 @@
     </view>
 
     <view class="playContent ">
-      <view class="noData ">暂时没有数据</view>
+      <view class="noData" wx:if="{{weekHistoryList.length <= 0}}">暂时没有数据</view>
+      <view wx:else>
+        <view class="title">最近播放</view>
+        <scroll-view scroll-x class="scrollImage" enable-flex>
+          <view wx:for="{{weekHistoryList}}" wx:key="index">
+            <image src="{{item.url}}"></image>
+          </view>
+        </scroll-view>
+      </view>
+
     </view>
 
     <view class="cardList ">

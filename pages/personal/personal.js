@@ -1,4 +1,6 @@
 // pages/personal/personal.js
+
+import ajax from "../../utils/ajax.js"
 Page({
 
   /**
@@ -7,7 +9,8 @@ Page({
   data: {
     touchMove: "",
     transitionName: "",
-    userInfo: {}
+    userInfo: {},
+    weekHistoryList: []
   },
 
   handleTouch(event) {
@@ -67,6 +70,24 @@ Page({
     // this.setData({
     //   userInfo: JSON.parse(res.data)
     // })
+    if (this.data.userInfo.userId) {
+      ajax("/user/record", {
+        uid: this.data.userInfo.userId,
+        type: 1
+      }).then((val) => {
+        let week = val.weekData.map((item) => {
+          return {
+            url: item.song.al.picUrl,
+            name: item.song.name
+          }
+        })
+        // console.log(week)
+        this.setData({
+          weekHistoryList: week
+        })
+      })
+    }
+
   },
 
   /**
