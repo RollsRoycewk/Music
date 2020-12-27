@@ -7,17 +7,12 @@
 </view>
 
 <!-- nav -->
-<scroll-view class="nav-container" enable-flex scroll-x bindtap="handleTap">
-  <view class="nav-item {{ currentid === item.id ? 'active' : ''}}" wx:for="{{navList}}" wx:key="id" data-currentId="{{item.id}}">{{item.name}} </view>
+<scroll-view class="nav-container" enable-flex scroll-x bindtap="handleTap" scroll-into-view="{{scrollsId}}">
+  <view class="nav-item {{ currentid === item.id ? 'active' : ''}}" wx:for="{{navList}}" wx:key="id" data-currentId="{{item.id}}" id="scroll{{item.id}}">{{item.name}} </view>
 </scroll-view>
 
 <!-- videoList区域 -->
-<scroll-view class="videoList" 
-scroll-y 
-refresher-enabled 
-refresher-triggered = "{{triggered}}"
-bindrefresherrefresh="handleFresherrefresh"
-bindscrolltolower = "handlescrolltolower">
+<scroll-view class="videoList" scroll-y refresher-enabled refresher-triggered="{{triggered}}" bindrefresherrefresh="handleFresherrefresh" bindscrolltolower="handlescrolltolower">
   <view class="videoItem" wx:for="{{videosList}}" wx:key="id">
     <video class="common" src="{{item.urlInfo}}"></video>
     <view class="content">{{item.title}}</view>

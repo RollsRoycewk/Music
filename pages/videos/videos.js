@@ -9,15 +9,18 @@ Page({
     navList: [],
     currentid: 58100,
     videosList: [],
-    triggered: false
+    triggered: false,
+    scrollsId: ""
   },
 
   // 点击事件
   async handleTap(event) {
     let res = event.target.dataset.currentid;
+    let id = event.target.id
     if (res) {
       this.setData({
-        currentid: res
+        currentid: res,
+        scrollsId: id
       })
     }
     wx.showLoading({
