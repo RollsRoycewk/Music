@@ -12,9 +12,12 @@
 </scroll-view>
 
 <!-- videoList区域 -->
-<scroll-view class="videoList" scroll-y refresher-enabled 
+<scroll-view class="videoList" 
+scroll-y 
+refresher-enabled 
 refresher-triggered = "{{triggered}}"
-bindrefresherrefresh="handleFresherrefresh">
+bindrefresherrefresh="handleFresherrefresh"
+bindscrolltolower = "handlescrolltolower">
   <view class="videoItem" wx:for="{{videosList}}" wx:key="id">
     <video class="common" src="{{item.urlInfo}}"></video>
     <view class="content">{{item.title}}</view>

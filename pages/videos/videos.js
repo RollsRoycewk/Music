@@ -52,11 +52,26 @@ Page({
 
   },
   async handleFresherrefresh() {
-    console.log("handleFresherrefresh")
+    // console.log("handleFresherrefresh")
     await this.getVideosList()
     this.setData({
       triggered: false
     })
+  },
+  handlescrolltolower() {
+    // console.log("handlescrolltolower")
+    if (this.flag) return;
+    this.flag = true
+    setTimeout(() => {
+      let falseData = JSON.parse(JSON.stringify(this.data.videosList))
+      this.setData({
+        videosList: [...this.data.videosList, ...falseData]
+      })
+      this.flag = false
+    }, 3000)
+
+    // console.log(falseData)
+
   },
   /**
    * 生命周期函数--监听页面加载
