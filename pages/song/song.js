@@ -7,7 +7,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    songsList: []
+    songsList: [],
+    songId: "",
+    audioSrc: "",
+    isPlay: false
   },
 
   /**
@@ -29,6 +32,21 @@ Page({
     wx.setNavigationBarTitle({
       title: this.data.songsList.name
     })
+
+    // 发送请求获取音乐
+    let audioSrc = await ajax("/song/url", {
+      id: this.data.songId
+    })
+    audioSrc = audioSrc.data[0].url
+    this.setData({
+      audioSrc
+    })
+
+    // 全局北京音乐
+    let BackgroundAudioManager = wx.getBackgroundAudioManager()
+    BackgroundAudioManager.src = this.data.audioSrc
+    BackgroundAudioManager.title = this.data.songsList.name
+    BackgroundAudioManager.play()
   },
 
 
