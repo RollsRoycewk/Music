@@ -12,8 +12,30 @@ Page({
     rankingList: []
   },
   handleRecommend() {
+    let cookies = wx.getStorageSync("cookies");
+    if (!cookies) {
+      wx.showModal({
+        title: "请先登录",
+        content: "该功能需要登录账号",
+        success: ({
+          confirm
+        }) => {
+          console.log(confirm)
+          if (!confirm) {
+            wx.switchTab({
+              url: "/pages/index/index"
+            })
+          } else {
+            wx.navigateTo({
+              url: "/pages/login/login"
+            })
+          }
+        }
+      })
+      return;
+    }
     wx.navigateTo({
-      url: "/pages/recommendSong/recommendSong",
+      url: "/pages/recommendSong/recommendSong"
     })
   },
   /**

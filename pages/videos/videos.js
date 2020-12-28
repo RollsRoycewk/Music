@@ -109,14 +109,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: async function() {
-    const result = await ajax("/video/group/list")
-    let navList = result.data.splice(0, 14)
-    this.setData({
-      navList,
-      currentid: navList[0].id,
-    })
-    this.getVideosList()
-
     let cookies = wx.getStorageSync("cookies");
     if (!cookies) {
       wx.showModal({
@@ -137,7 +129,16 @@ Page({
           }
         }
       })
+      return;
     }
+
+    const result = await ajax("/video/group/list")
+    let navList = result.data.splice(0, 14)
+    this.setData({
+      navList,
+      currentid: navList[0].id,
+    })
+    this.getVideosList()
   },
 
   /**
