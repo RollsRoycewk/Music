@@ -25,8 +25,13 @@ Page({
       songsList: result.songs[0],
       songId
     })
-    // console.log(result)
+
+    wx.setNavigationBarTitle({
+      title: this.data.songsList.name
+    })
   },
+
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
