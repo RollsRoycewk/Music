@@ -12,6 +12,10 @@ Page({
     triggered: false,
     scrollsId: ""
   },
+  // image切换到视屏
+  showVideos(event) {
+    console.log(event, "showVideos")
+  },
   // 处理点击播放
   handlePlay(event) {
     // console.log(event, "handlePlay")
@@ -55,7 +59,8 @@ Page({
           urlInfo: item.data.urlInfo.url,
           id: item.data.urlInfo.id,
           commentCount: item.data.commentCount,
-          shareCount: item.data.shareCount
+          shareCount: item.data.shareCount,
+          coverUrl: item.data.coverUrl
         }
       })
       this.setData({
@@ -112,6 +117,27 @@ Page({
     })
     this.getVideosList()
 
+    let cookies = wx.getStorageSync("cookies");
+    if (!cookies) {
+      wx.showModal({
+        title: "请先登录",
+        content: "该功能需要登录账号",
+        success: ({
+          confirm
+        }) => {
+          console.log(confirm)
+          if (!confirm) {
+            wx.switchTab({
+              url: "/pages/index/index"
+            })
+          } else {
+            wx.navigateTo({
+              url: "/pages/login/login"
+            })
+          }
+        }
+      })
+    }
   },
 
   /**

@@ -3,7 +3,8 @@
     "pages/videos/videos",
     "pages/index/index",
     "pages/login/login",
-    "pages/personal/personal"
+    "pages/personal/personal",
+    "pages/recommendSong/recommendSong"
   ],
   "window": {
     "backgroundTextStyle": "light",
