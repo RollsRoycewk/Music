@@ -17,13 +17,11 @@ Page({
     // console.log(event, "handlePlay")
     let id = event.currentTarget.id;
     let preVideoId = this.preVideoId
-    if (preVideoId) {
+    if (preVideoId && preVideoId !== id) {
       let currentvideo = wx.createVideoContext(preVideoId)
       currentvideo.pause()
     }
     this.preVideoId = id;
-
-
   },
   // 点击事件
   async handleTap(event) {
