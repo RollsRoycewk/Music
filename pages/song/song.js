@@ -12,9 +12,18 @@ Page({
     audioSrc: "",
     isPlay: false
   },
-  handlePlayStop() {
+  async handlePlayStop() {
     // 全局北京音乐
-
+    if (!this.data.audioSrc) {
+      // 发送请求获取音乐
+      let audioSrc = await ajax("/song/url", {
+        id: this.data.songId
+      })
+      audioSrc = audioSrc.data[0].url
+      this.setData({
+        audioSrc
+      })
+    }
     let BackgroundAudioManager = wx.getBackgroundAudioManager()
 
     if (this.data.isPlay) {
@@ -50,15 +59,6 @@ Page({
 
     wx.setNavigationBarTitle({
       title: this.data.songsList.name
-    })
-
-    // 发送请求获取音乐
-    let audioSrc = await ajax("/song/url", {
-      id: this.data.songId
-    })
-    audioSrc = audioSrc.data[0].url
-    this.setData({
-      audioSrc
     })
   },
 
