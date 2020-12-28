@@ -181,7 +181,31 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
-
+  onShareAppMessage: function({
+    from,
+    target
+  }) {
+    // console.log(from, imageurl, title)
+    if (from === "button") {
+      let {
+        imageurl,
+        title
+      } = target.dataset
+      return {
+        title,
+        imageUrl: imageurl,
+        path: "/pages/videos/videos",
+      }
+    } else if (from === "menu") {
+      return {
+        title: "微信自带",
+        imageUrl: "/static/images/nvsheng.jpg",
+        path: "/pages/videos/videos",
+      }
+    }
+    // console.log(val) 
+    // button { from: "button", target: { … } }
+    // {from: "menu", target: undefined}  微信自带...
+    // console.log("onShareAppMessage")
   }
 })
