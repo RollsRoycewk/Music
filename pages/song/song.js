@@ -1,6 +1,6 @@
 // pages/song/song.js
 import ajax from "../../utils/ajax.js"
-
+let appInstance = getApp();
 Page({
 
   /**
@@ -31,6 +31,8 @@ Page({
       this.setData({
         isPlay: false
       })
+      appInstance.globalData.isPlay = false
+      console.log("点击了暂停按钮", appInstance.globalData.isPlay)
     } else {
       BackgroundAudioManager.src = this.data.audioSrc
       BackgroundAudioManager.title = this.data.songsList.name
@@ -38,8 +40,10 @@ Page({
       this.setData({
         isPlay: true
       })
+      appInstance.globalData.isPlay = true;
+      appInstance.globalData.videoId = this.data.songId;
+      console.log("点击了播放按钮", appInstance.globalData.isPlay, appInstance.globalData.videoId)
     }
-
   },
   /**
    * 生命周期函数--监听页面加载
@@ -60,6 +64,20 @@ Page({
     wx.setNavigationBarTitle({
       title: this.data.songsList.name
     })
+
+
+    // console.log(appInstance.globalData.isPlay)
+    let {
+      isPlay,
+      videoId
+    } = appInstance.globalData;
+    // console.log(isPlay, videoId)
+
+    if (videoId === this.data.songId) {
+      this.setData({
+        isPlay: true
+      })
+    }
   },
 
 
