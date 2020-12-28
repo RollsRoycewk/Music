@@ -15,11 +15,15 @@ Page({
   },
   // image切换到视屏
   showVideos(event) {
-    console.log(event, "showVideos")
+    // console.log(event, "showVideos")
     let videosId = event.currentTarget.id;
     this.setData({
       videosId
     })
+
+    let VideoContext = wx.createVideoContext(videosId)
+    VideoContext.play()
+
   },
   // 处理点击播放
   handlePlay(event) {
