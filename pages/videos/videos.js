@@ -12,7 +12,19 @@ Page({
     triggered: false,
     scrollsId: ""
   },
+  // 处理点击播放
+  handlePlay(event) {
+    // console.log(event, "handlePlay")
+    let id = event.currentTarget.id;
+    let preVideoId = this.preVideoId
+    if (preVideoId) {
+      let currentvideo = wx.createVideoContext(preVideoId)
+      currentvideo.pause()
+    }
+    this.preVideoId = id;
 
+
+  },
   // 点击事件
   async handleTap(event) {
     let res = event.target.dataset.currentid;

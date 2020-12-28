@@ -14,7 +14,7 @@
 <!-- videoList区域 -->
 <scroll-view class="videoList" scroll-y refresher-enabled refresher-triggered="{{triggered}}" bindrefresherrefresh="handleFresherrefresh" bindscrolltolower="handlescrolltolower">
   <view class="videoItem" wx:for="{{videosList}}" wx:key="id">
-    <video class="common" src="{{item.urlInfo}}"></video>
+    <video class="common" src="{{item.urlInfo}}" bindplay="handlePlay" id="{{item.id}}"></video>
     <view class="content">{{item.title}}</view>
     <view class="footer">
       <image class="avatar" src="/static/images/logo.png"></image>
