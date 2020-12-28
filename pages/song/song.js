@@ -1,31 +1,31 @@
-// pages/recommendSong/recommendSong.js
-
+// pages/song/song.js
 import ajax from "../../utils/ajax.js"
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    day: "",
-    month: ""
+    songsList: []
   },
-  handleSongId(event) {
-    let songId = event.currentTarget.dataset.songid;
-    wx.navigateTo({
-      url: "/pages/song/song?songId=" + songId,
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-    let day = new Date().getDate()
-    let month = new Date().getMonth() + 1
-    this.setData({
-      day,
-      month
+  onLoad: async function(options) {
+    let {
+      songId
+    } = options;
+    let result = await ajax("/song/detail", {
+      ids: songId
     })
+
+    this.setData({
+      songsList: result.songs[0],
+      songId
+    })
+    // console.log(result)
   },
 
   /**
@@ -38,12 +38,8 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: async function() {
-    const result = await ajax("/recommend/songs");
-    let songList = result.recommend.slice(0, 14);
-    this.setData({
-      songList: songList
-    })
+  onShow: function() {
+
   },
 
   /**
