@@ -10,11 +10,16 @@ Page({
     currentid: 58100,
     videosList: [],
     triggered: false,
-    scrollsId: ""
+    scrollsId: "",
+    videosId: ""
   },
   // image切换到视屏
   showVideos(event) {
     console.log(event, "showVideos")
+    let videosId = event.currentTarget.id;
+    this.setData({
+      videosId
+    })
   },
   // 处理点击播放
   handlePlay(event) {
