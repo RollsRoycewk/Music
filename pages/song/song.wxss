@@ -1,7 +1,7 @@
 /* pages/song/song.wxss */
 
 .songContainer {
-  background: rgba(0, 0, 0, 0.5);
+  background: #696969;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -12,7 +12,26 @@ Page({
     audioSrc: "",
     isPlay: false
   },
+  handlePlayStop() {
+    // 全局北京音乐
 
+    let BackgroundAudioManager = wx.getBackgroundAudioManager()
+
+    if (this.data.isPlay) {
+      BackgroundAudioManager.pause();
+      this.setData({
+        isPlay: false
+      })
+    } else {
+      BackgroundAudioManager.src = this.data.audioSrc
+      BackgroundAudioManager.title = this.data.songsList.name
+      BackgroundAudioManager.play()
+      this.setData({
+        isPlay: true
+      })
+    }
+
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -41,12 +60,6 @@ Page({
     this.setData({
       audioSrc
     })
-
-    // 全局北京音乐
-    let BackgroundAudioManager = wx.getBackgroundAudioManager()
-    BackgroundAudioManager.src = this.data.audioSrc
-    BackgroundAudioManager.title = this.data.songsList.name
-    BackgroundAudioManager.play()
   },
 
 
