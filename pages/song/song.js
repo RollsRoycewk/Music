@@ -1,5 +1,6 @@
 // pages/song/song.js
 import ajax from "../../utils/ajax.js"
+import PubSub from 'pubsub-js'
 let appInstance = getApp();
 Page({
 
@@ -11,6 +12,30 @@ Page({
     songId: "",
     audioSrc: "",
     isPlay: false
+  },
+  // 发送请求公共函数
+  async getSongListAsync() {
+    let result = await ajax("/song/detail", {
+      ids: this.data.songId
+    })
+
+    this.setData({
+      songsList: result.songs[0],
+      // songId
+    })
+
+    wx.setNavigationBarTitle({
+      title: this.data.songsList.name
+    })
+
+  },
+  // 点击切换
+  handleTypeSwitch(event) {
+    let {
+      id
+    } = event.currentTarget;
+    PubSub.publish('switchType', id);
+    this.getSongListAsync()
   },
   async handlePlayStop() {
     // 全局北京音乐
@@ -31,8 +56,9 @@ Page({
       this.setData({
         isPlay: false
       })
+      
       appInstance.globalData.isPlay = false
-      console.log("点击了暂停按钮", appInstance.globalData.isPlay)
+      // console.log("点击了暂停按钮", appInstance.globalData.isPlay)
     } else {
       BackgroundAudioManager.src = this.data.audioSrc
       BackgroundAudioManager.title = this.data.songsList.name
@@ -42,7 +68,7 @@ Page({
       })
       appInstance.globalData.isPlay = true;
       appInstance.globalData.videoId = this.data.songId;
-      console.log("点击了播放按钮", appInstance.globalData.isPlay, appInstance.globalData.videoId)
+      // console.log("点击了播放按钮", appInstance.globalData.isPlay, appInstance.globalData.videoId)
     }
   },
   /**
@@ -52,19 +78,30 @@ Page({
     let {
       songId
     } = options;
-    let result = await ajax("/song/detail", {
-      ids: songId
-    })
 
     this.setData({
-      songsList: result.songs[0],
       songId
     })
+    // let result = await ajax("/song/detail", {
+    //   ids: songId
+    // })
 
-    wx.setNavigationBarTitle({
-      title: this.data.songsList.name
-    })
+    // this.setData({
+    //   songsList: result.songs[0],
+    //   songId
+    // })
 
+    // wx.setNavigationBarTitle({
+    //   title: this.data.songsList.name
+    // })
+    this.getSongListAsync()
+    PubSub.subscribe('changeId', (msg, data) => {
+      // console.log(msg, data)
+      this.setData({
+        songId: data
+      })
+      this.getSongListAsync()
+    });
 
     // console.log(appInstance.globalData.isPlay)
     let {

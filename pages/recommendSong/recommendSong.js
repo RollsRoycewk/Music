@@ -1,6 +1,7 @@
 // pages/recommendSong/recommendSong.js
 
 import ajax from "../../utils/ajax.js"
+import PubSub from 'pubsub-js'
 Page({
 
   /**
@@ -8,24 +9,72 @@ Page({
    */
   data: {
     day: "",
-    month: ""
+    month: "",
+    songList: [],
+    currentindex: null
   },
   handleSongId(event) {
-    let songId = event.currentTarget.dataset.songid;
-    wx.navigateTo({
-      url: "/pages/song/song?songId=" + songId,
+    let {
+      songid,
+      currentindex
+    } = event.currentTarget.dataset;
+
+    this.setData({
+      currentindex
     })
+
+
+    wx.navigateTo({
+      url: "/pages/song/song?songId=" + songid,
+    })
+
+
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: async function(options) {
     let day = new Date().getDate()
     let month = new Date().getMonth() + 1
     this.setData({
       day,
       month
     })
+
+    const result = await ajax("/recommend/songs");
+    let songList = result.recommend.slice(0, 14);
+    this.setData({
+      songList: songList
+    })
+
+    PubSub.subscribe('switchType', (msg, data) => {
+      // console.log(msg, data)
+      let {
+        currentindex,
+        songList
+      } = this.data
+
+      if (data === "next") {
+        if (currentindex >= songList.length - 1) {
+          currentindex = 0
+        } else {
+          currentindex++
+        }
+      }
+      if (data === "pre") {
+        if (currentindex === 0) {
+          currentindex = songList.length - 1;
+        } else {
+          currentindex--
+        }
+      }
+      this.setData({
+        currentindex
+      })
+
+      // 发布消息
+      PubSub.publishSync('changeId', songList[currentindex].id);
+    });
   },
 
   /**
@@ -38,12 +87,8 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: async function() {
-    const result = await ajax("/recommend/songs");
-    let songList = result.recommend.slice(0, 14);
-    this.setData({
-      songList: songList
-    })
+  onShow: function() {
+
   },
 
   /**

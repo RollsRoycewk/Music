@@ -9,8 +9,8 @@ export default function(url, data = {}, method = "GET") {
   }
   return new Promise((resolve, reject) => {
     wx.request({
-      url: "http://wangkai.zone:3000" + url,
-      // url: "http://localhost:3000" + url,
+      // url: "http://wangkai.zone:3000" + url,
+      url: "http://localhost:3000" + url,
       data,
       method,
       header: {
