@@ -27,6 +27,7 @@ Page({
       this.setData({
         isPlay: true
       })
+      // BackgroundAudioManager.startTime = 200
       appInstance.globalData.isPlay = true;
     })
     wx.onBackgroundAudioPause(() => {
@@ -49,6 +50,11 @@ Page({
         currentWidth,
         currentTime: moment(currentTime * 1000).format('mm:ss')
       })
+    })
+
+    // 自动播放
+    BackgroundAudioManager.onEnded(() => {
+      PubSub.publish('switchType', "next");
     })
   },
   // 获取音乐url
@@ -121,6 +127,7 @@ Page({
       })
       appInstance.globalData.isPlay = true;
       appInstance.globalData.videoId = this.data.songId;
+      // BackgroundAudioManager.startTime = 200
       // console.log("点击了播放按钮", appInstance.globalData.isPlay, appInstance.globalData.videoId)
     }
   },
