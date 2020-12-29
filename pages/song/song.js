@@ -15,6 +15,23 @@ Page({
     audioSrc: "",
     isPlay: false
   },
+  // 背景音乐事件
+  backgroundEvent() {
+    wx.onBackgroundAudioPlay(() => {
+      // console.log("onBackgroundAudioPlay");
+      this.setData({
+        isPlay: true
+      })
+      appInstance.globalData.isPlay = true;
+    })
+    wx.onBackgroundAudioPause(() => {
+      // console.log("onBackgroundAudioPause")
+      this.setData({
+        isPlay: false
+      })
+      appInstance.globalData.isPlay = false;
+    })
+  },
   // 获取音乐url
   async getMusicUrl() {
     // 发送请求获取音乐
@@ -125,6 +142,8 @@ Page({
       BackgroundAudioManager.src = this.data.audioSrc
       BackgroundAudioManager.title = this.data.songsList.name
     });
+    // 处理背景播放事件
+    this.backgroundEvent()
 
     // console.log(appInstance.globalData.isPlay)
     let {
