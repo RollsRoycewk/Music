@@ -35,7 +35,7 @@ Page({
       return;
     }
     wx.navigateTo({
-      url: "/pages/recommendSong/recommendSong"
+      url: "/song/pages/recommendSong/recommendSong"
     })
   },
   /**

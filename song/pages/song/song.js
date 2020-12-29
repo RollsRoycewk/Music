@@ -1,5 +1,5 @@
 // pages/song/song.js
-import ajax from "../../utils/ajax.js"
+import ajax from "../../../utils/ajax.js"
 import PubSub from 'pubsub-js'
 import moment from "moment"
 
@@ -7,7 +7,6 @@ let appInstance = getApp();
 let BackgroundAudioManager = wx.getBackgroundAudioManager()
 
 Page({
-
   /**
    * 页面的初始数据
    */

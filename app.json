@@ -1,7 +1,5 @@
 {
   "pages": [
-    "pages/recommendSong/recommendSong",
-    "pages/song/song",
     "pages/index/index",
     "pages/videos/videos",
     "pages/login/login",
@@ -9,6 +7,15 @@
   ],
   "requiredBackgroundModes": [
     "audio"
+  ],
+  "subpackages": [
+    {
+      "root": "song",
+      "pages": [
+        "pages/recommendSong/recommendSong",
+        "pages/song/song"
+      ]
+    }
   ],
   "window": {
     "backgroundTextStyle": "light",
