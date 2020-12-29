@@ -1,6 +1,8 @@
 // pages/song/song.js
 import ajax from "../../utils/ajax.js"
 import PubSub from 'pubsub-js'
+import moment from "moment"
+
 let appInstance = getApp();
 let BackgroundAudioManager = wx.getBackgroundAudioManager()
 
@@ -13,7 +15,10 @@ Page({
     songsList: [],
     songId: "",
     audioSrc: "",
-    isPlay: false
+    isPlay: false,
+    currentTime: "00:01",
+    totaltime: "00:00",
+    currentWidth: 0
   },
   // 背景音乐事件
   backgroundEvent() {
@@ -30,6 +35,20 @@ Page({
         isPlay: false
       })
       appInstance.globalData.isPlay = false;
+    })
+    // // 背景音频时间
+    // const duration = BackgroundAudioManager.duration;
+    // console.log(duration)
+    BackgroundAudioManager.onTimeUpdate(() => {
+      // 背景音频时间
+      let duration = BackgroundAudioManager.duration;
+      // 当前播放音频的位置
+      let currentTime = BackgroundAudioManager.currentTime;
+      let currentWidth = (currentTime / duration) * 100;
+      this.setData({
+        currentWidth,
+        currentTime: moment(currentWidth * 1000).format('mm:ss')
+      })
     })
   },
   // 获取音乐url
@@ -53,6 +72,7 @@ Page({
     this.setData({
       songsList: result.songs[0],
       // songId
+      totaltime: moment(result.songs[0].dt).format('mm:ss')
     })
 
     wx.setNavigationBarTitle({

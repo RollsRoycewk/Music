@@ -1,11 +1,11 @@
 {
   "pages": [
     "pages/recommendSong/recommendSong",
+    "pages/song/song",
     "pages/index/index",
     "pages/videos/videos",
     "pages/login/login",
-    "pages/personal/personal",
-    "pages/song/song"
+    "pages/personal/personal"
   ],
   "requiredBackgroundModes": [
     "audio"

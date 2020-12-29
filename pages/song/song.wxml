@@ -7,6 +7,16 @@
     <image class="bigImg" src="{{songsList.al.picUrl}}"></image>
   </view>
 
+  <!-- 进度条啊 -->
+  <view class="progress-container">
+    <text class="start-time">{{currentTime}}</text>
+    <view class="line-con">
+      <view class="line-inner" style="width:{{currentWidth}}%">
+        <view class="line-point"></view>
+      </view>
+    </view>
+    <text class="end-time">{{totaltime}}</text>
+  </view>
   <!-- 底部播放选项区域 -->
   <view class="musicControl">
     <text class="iconfont icon-iconsMusicyemianbofangmoshiShuffle"></text>
