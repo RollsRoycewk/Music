@@ -16,8 +16,8 @@ Page({
     songId: "",
     audioSrc: "",
     isPlay: false,
-    currentTime: "00:01",
-    totaltime: "00:00",
+    currentTime: "00:00",
+    totaltime: "--:--",
     currentWidth: 0
   },
   // 背景音乐事件
@@ -47,7 +47,7 @@ Page({
       let currentWidth = (currentTime / duration) * 100;
       this.setData({
         currentWidth,
-        currentTime: moment(currentWidth * 1000).format('mm:ss')
+        currentTime: moment(currentTime * 1000).format('mm:ss')
       })
     })
   },
