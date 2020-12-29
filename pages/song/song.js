@@ -2,6 +2,8 @@
 import ajax from "../../utils/ajax.js"
 import PubSub from 'pubsub-js'
 let appInstance = getApp();
+let BackgroundAudioManager = wx.getBackgroundAudioManager()
+
 Page({
 
   /**
@@ -12,6 +14,18 @@ Page({
     songId: "",
     audioSrc: "",
     isPlay: false
+  },
+  // 获取音乐url
+  async getMusicUrl() {
+    // 发送请求获取音乐
+    let audioSrc = await ajax("/song/url", {
+      id: this.data.songId
+    })
+    audioSrc = audioSrc.data[0].url
+    this.setData({
+      audioSrc
+    })
+
   },
   // 发送请求公共函数
   async getSongListAsync() {
@@ -35,28 +49,30 @@ Page({
       id
     } = event.currentTarget;
     PubSub.publish('switchType', id);
-    this.getSongListAsync()
   },
   async handlePlayStop() {
     // 全局北京音乐
     if (!this.data.audioSrc) {
-      // 发送请求获取音乐
-      let audioSrc = await ajax("/song/url", {
-        id: this.data.songId
-      })
-      audioSrc = audioSrc.data[0].url
-      this.setData({
-        audioSrc
-      })
+      // // 发送请求获取音乐
+      // let audioSrc = await ajax("/song/url", {
+      //   id: this.data.songId
+      // })
+      // audioSrc = audioSrc.data[0].url
+      // this.setData({
+      //   audioSrc
+      // })
+
+      // 一定要加await,否则后面先执行没有数据报错
+      await this.getMusicUrl();
     }
-    let BackgroundAudioManager = wx.getBackgroundAudioManager()
+    // let BackgroundAudioManager = wx.getBackgroundAudioManager()
 
     if (this.data.isPlay) {
       BackgroundAudioManager.pause();
       this.setData({
         isPlay: false
       })
-      
+
       appInstance.globalData.isPlay = false
       // console.log("点击了暂停按钮", appInstance.globalData.isPlay)
     } else {
@@ -95,12 +111,19 @@ Page({
     //   title: this.data.songsList.name
     // })
     this.getSongListAsync()
-    PubSub.subscribe('changeId', (msg, data) => {
+    PubSub.subscribe('changeId', async(msg, data) => {
       // console.log(msg, data)
       this.setData({
         songId: data
       })
-      this.getSongListAsync()
+      // 获取当前音乐detail
+      this.getSongListAsync();
+      // 获取音乐url
+      // 注意,注意,一定要加await  否则报错
+      await this.getMusicUrl();
+      // 播放歌曲
+      BackgroundAudioManager.src = this.data.audioSrc
+      BackgroundAudioManager.title = this.data.songsList.name
     });
 
     // console.log(appInstance.globalData.isPlay)
