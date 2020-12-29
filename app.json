@@ -8,6 +8,14 @@
   "requiredBackgroundModes": [
     "audio"
   ],
+  "preloadRule": {
+    "pages/index/index": {
+      "network": "all",
+      "packages": [
+        "song"
+      ]
+    }
+  },
   "subpackages": [
     {
       "root": "song",
