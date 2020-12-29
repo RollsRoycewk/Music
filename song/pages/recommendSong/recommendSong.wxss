@@ -1,7 +1,10 @@
-page{
-  height:100%;
+@import "/static/iconfont/iconfont.wxss";
+
+page {
+  height: 100%;
 }
-.recommendContainer .header{
+
+.recommendContainer .header {
   position: relative;
   width: 100%;
   height: 300rpx;
@@ -11,7 +14,6 @@ page{
   width: 100%;
   height: 100%;
 }
-
 
 .recommendContainer .header .date {
   position: absolute;
@@ -30,9 +32,7 @@ page{
   font-size: 40rpx;
 }
 
-
 /* 推荐列表 */
-
 
 .recommendList {
   border-radius: 40rpx;
@@ -43,8 +43,9 @@ page{
 }
 
 .scrollView {
-  height: calc(100vh - 420rpx)
+  height: calc(100vh - 420rpx);
 }
+
 .listHeader {
   height: 80rpx;
   line-height: 80rpx;
@@ -56,19 +57,15 @@ page{
   color: #333;
 }
 
-
-
-
 .recommendItem {
   display: flex;
   position: relative;
   margin-top: 30rpx;
 }
 
-
 .recommendItem image {
   width: 80rpx;
-  height:80rpx;
+  height: 80rpx;
   border-radius: 6rpx;
 }
 
@@ -77,12 +74,12 @@ page{
   flex-direction: column;
   margin-left: 30rpx;
 }
+
 .recommendItem .musicContent text {
   height: 40rpx;
   line-height: 40rpx;
   font-size: 24rpx;
 }
-
 
 .recommendItem .radio {
   position: absolute;
